@@ -16,7 +16,8 @@ int main()
 {
     printf("%s\n", "Hello, World!");
     return 0;
-}```
+}
+```
 
 followed by the program saving the changes to a file and exiting due to the hotmilk-specific sequences such as "^S" and "^X" !
 
