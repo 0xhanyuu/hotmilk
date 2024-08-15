@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int file_error(char * filename)
+{
+	fprintf(stderr, "usage: %s <filename>\n", filename);
+	return EXIT_FAILURE;
+}
+
+int validity_error(char * filename)
+{
+	fprintf(stderr, "the filename must not contain any of the following extraneous characters:\n"
+					"[\\, /, -, .]\n");
+	return EXIT_FAILURE;
+}
+
+int check_validity(char * filename)
+{
+	for ( int i = 0; i < strlen(filename); i++ )
+	{
+		switch(filename[i])
+		{
+			case '\\':
+			case '/':
+			case '-':
+			case '.':
+			return EXIT_FAILURE;
+			break;
+
+			default:
+			break;
+		}
+	}
+	return EXIT_SUCCESS;
+}
+
+int file_handling(int argc, char **argv)
+{
+	// if no filename
+	if ( argc != 2 )
+	{
+		// non-segmentation fault code [optional ^_^]:
+		// return file_error(argv[0]);
+
+		file_error(argv[0]);
+	}
+
+	// if filename, check validity
+	if ( check_validity(argv[1]) != EXIT_SUCCESS )
+	{
+		return validity_error(argv[1]);
+	}
+}
+
+enum termcall
+{
+	// utilities
+	nop = 0,
+	save,
+	quit,
+
+	// characters
+	tab,
+	backspace,
+};
+
+void hotmilk(char * filename)
+{
+	FILE * current_file = fopen(filename, "rw");
+
+	if ( current_file == NULL )
+	{
+		printf("fopen() failed!");
+		printf("creating file ...");
+
+		fopen(filename, "w");
+	}
+
+	enum termcall current_termcall = nop;
+
+	while ( current_termcall != quit )
+	{
+		// go to start of file
+		rewind(current_file);
+		// output file
+
+		/*
+		char * read_buffer = (char *)malloc(512 * sizeof(char));
+		size_t chars_read = fread(read_buffer, sizeof(char), 512, current_file);
+		printf("%s", read_buffer);
+		*/
+
+		int current_character;
+		while ( (current_character = fgetc(current_file)) != EOF )
+			putchar(current_character);
+
+		system("echo -n $(whoami)"); printf("@hotmilk $ ");
+
+		printf("reached end of termcall loop!\n");
+	}
+}
+
+int main(int argc, char **argv)
+{
+	int exit_code = file_handling(argc, argv);
+
+	if ( exit_code == EXIT_FAILURE ) { return EXIT_FAILURE; }
+
+	char * filename = (char *)malloc(strlen(argv[1]) * sizeof(char));
+	filename = argv[1];
+	hotmilk(filename);
+	return 0;
+}

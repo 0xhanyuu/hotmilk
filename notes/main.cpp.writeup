@@ -1,0 +1,43 @@
+#file_handling
+- takes filename
+>terminal(filename)
+- opens file, uses according filename, etc.
+
+#algorithms
+>while ( termcall != exit_code )
+	- according graphical handling executed
+	- get user input
+	>while ( index < inputString.length() )
+		- handle character type (escape character, super, normal character)
+		>switch(termcall)
+			- handle all termcalls
+
+
+this system allows the program to correctly handle:
+input
+iterating through input
+handling each character correctly in terms of:
+	-character type
+	-the character type's corresponding termcall
+
+
+my current c code:
+
+- doing all file handling stuff correctly (read/[create]) [o]
+- outputting file [o]
+- get user input [o]
+- iterate through whole input [o]
+- handle character type [o/?]
+	- hotmilk_parse returns an enum, which is perfect,
+		it is just that it is immediately thrown into a switch and handled
+	- it is like the c++ process but less abstracted,
+		which is arguably worse
+- handle corresponding termcall [o/?]
+	- section above, aforementioned 'immediately thrown into a switch'
+		this is the switch function. it handles all termcalls
+
+TODO:
+- abstract/modularise more! (wow)
+	- separate the hotmilk_parse from the switch
+	- create a new function like 'handle_termcall'
+		this will manage the current termcall
