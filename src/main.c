@@ -171,16 +171,6 @@ void hotmilk(char * filename)
 				break;
 			}
 		}
-
-		// here lies code that was named:
-		//'clear string'
-		// this was meant to clear a char * of its contents
-
-		/*
-		int index = 0;
-		for (; user_input[index] != ' '; index++ ) { *user_input++; }
-		*/
-
 		printf("reached end of termcall loop!\n");
 	}
 }
