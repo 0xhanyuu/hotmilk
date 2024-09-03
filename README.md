@@ -5,7 +5,7 @@ every input in this text editor is manual ! you have to provide escape sequences
 
 this may be a line you input in hotmilk :
 
-> "#include <stdio.h>\n\nint main()\n{\n\tprintf("%s\\n", "Hello, World!");\n\t\n\treturn 0;\n}^S^X"
+> #include <stdio.h>\n\nint main()\n{\n\tprintf("%s\\n", "Hello, World!");\n\t\n\treturn 0;\n}^S^X
 
 this will be the output :
 
