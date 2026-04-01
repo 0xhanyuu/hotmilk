@@ -1,5 +1,5 @@
 # hotmilk
-A rudimentary, esorteric text editor with an 'append-only' model, where escape sequences are typed manually in order to reflect the corresponding changes in the output file.
+A rudimentary, esoteric text editor with an 'append-only' model, where escape sequences are typed manually in order to reflect the corresponding changes in the output file.
 
 Supported escape sequences:
 
@@ -7,7 +7,7 @@ Supported escape sequences:
 - `\n` - newline
 - `\b` - backspace
 
-Some hotmilk-specific control sequences are / were (intended to be) implemented in this text editor in order to be able to interact with the output file, such as:
+Some hotmilk-specific control sequences are / were (intended to be) implemented in this text editor in order to be able to interface the output file, such as:
 
 - `^s` - save (to existing file)
 - `^x` - exit
